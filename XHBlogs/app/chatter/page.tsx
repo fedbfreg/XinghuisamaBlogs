@@ -8,18 +8,18 @@ import { siteConfig } from '@/siteConfig';
 
 
 export const metadata = {
-  title: "杂谈 | "+ siteConfig.title,
-  description: "日常碎片与灵感记录",
+  : "杂谈 | "+ siteConfig.
+  描述: “日常碎片与灵感记录”,
 };
 
-export default function ChatterPage() {
+导出 默认 函数 ChatterPage() {
   // 注意：这里我们假设你的 md 文件放在根目录的 chatters 文件夹里
   const chattersDirectory = path.join(process.cwd(), 'chatters');
-  let chatters = [];
+  let chatters: any[] = [];
 
-  try {
+  尝试 {
     // 确保文件夹存在
-    if (!fs.existsSync(chattersDirectory)) {
+    如果 (!fs.existsSync(chattersDirectory)) {
       fs.mkdirSync(chattersDirectory);
     }
 
@@ -31,13 +31,13 @@ export default function ChatterPage() {
       const { data, content } = matter(fileContents);
 
       return {
-        slug,
+        别名,
         title: data.title || '',
         date: data.date || '未知时间',
-        tags: data.tags || [],
-        mood: data.mood || '',
-        cover: data.cover || '',
-        content: content.replace(/^#+ .*\n/m, '') // 去除开头的 markdown 标题以优化截取显示
+        标签: 数据。标签 || [],
+        心情: 数据。心情 || '',
+        封面: 数据。封面 || '',
+        内容：内容。替换(/^#+ .* /m, '') // 去除开头的 markdown 标题以优化截取显示
       };
     }).sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime())); // 按时间倒序
   } catch (e) {
